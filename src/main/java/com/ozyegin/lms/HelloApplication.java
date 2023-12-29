@@ -1,4 +1,4 @@
-package com.ozyegin.lms1;
+package com.ozyegin.lms;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

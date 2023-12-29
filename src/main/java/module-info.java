@@ -11,6 +11,6 @@ module com.ozyegin.lms1 {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens com.ozyegin.lms1 to javafx.fxml;
-    exports com.ozyegin.lms1;
+    opens com.ozyegin.lms to javafx.fxml;
+    exports com.ozyegin.lms;
 }

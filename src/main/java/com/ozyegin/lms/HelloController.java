@@ -1,4 +1,4 @@
-package com.ozyegin.lms1;
+package com.ozyegin.lms;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
