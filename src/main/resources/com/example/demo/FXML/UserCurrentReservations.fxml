@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.FXML.UserCurrentReservations">
+   <children>
+      <Label layoutX="232.0" layoutY="22.0" text="Current Reservations">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="currentReservationsTable" layoutY="84.0" prefHeight="398.0" prefWidth="640.0">
+        <columns>
+            <TableColumn editable="false" prefWidth="91.20001220703125" text="Date Picked" />
+          <TableColumn editable="false" prefWidth="68.0" text="Book" />
+            <TableColumn editable="false" prefWidth="112.79998779296875" text="Condition Picked" />
+            <TableColumn editable="false" prefWidth="124.0" text="Deadline to return" />
+            <TableColumn editable="false" prefWidth="246.4000244140625" text="Reservation Message" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.FXML.UserPastReservations">
+   <children>
+      <Label layoutX="246.0" layoutY="22.0" text="Past Reservations">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="reservationStartDate" layoutX="7.0" layoutY="84.0" promptText="Start Date" />
+      <DatePicker fx:id="reservationFinishDate" layoutX="459.0" layoutY="84.0" promptText="Finish Date" />
+      <TableView fx:id="pastReservationsTable" layoutY="130.0" prefHeight="350.0" prefWidth="640.0">
+        <columns>
+          <TableColumn editable="false" prefWidth="75.0" text="Date Picked" />
+            <TableColumn editable="false" prefWidth="92.0" text="Date Returned" />
+          <TableColumn editable="false" prefWidth="73.5999755859375" text="Book" />
+            <TableColumn editable="false" prefWidth="113.60003662109375" text="Condition Picked" />
+            <TableColumn editable="false" prefWidth="108.79998779296875" text="Condition Return" />
+            <TableColumn editable="false" prefWidth="176.0" text="Return Status" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
