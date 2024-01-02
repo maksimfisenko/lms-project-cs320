@@ -19,8 +19,8 @@
       <TextField fx:id="loginField" layoutX="245.0" layoutY="166.0" promptText="Login" />
       <PasswordField fx:id="passwordField" layoutX="246.0" layoutY="198.0" promptText="Password" />
       <PasswordField fx:id="passwordCheckField" layoutX="246.0" layoutY="233.0" promptText="Confirm Password" />
-      <Button fx:id="signUpButton" layoutX="289.0" layoutY="266.0" mnemonicParsing="false" text="Sign Up" />
-      <Button fx:id="backButton" layoutY="8.0" mnemonicParsing="false" onAction="#Back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
+      <Button fx:id="signUpButton" layoutX="289.0" layoutY="266.0" mnemonicParsing="false" onAction="#save" text="Sign Up" />
+      <Button fx:id="backButton" layoutY="8.0" mnemonicParsing="false" onAction="#back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
