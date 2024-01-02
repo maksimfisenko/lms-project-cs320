@@ -10,10 +10,10 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
@@ -45,8 +45,14 @@ public class BookSearchController extends Controller implements Initializable{
 
     ObservableList<BookSearchModel> bookSearchModelObservableList = FXCollections.observableArrayList();
 
+    @FXML
+    TextField searchField;
     public void Back (ActionEvent e) throws IOException {
-        this.LoadScene("AdminWelcome.fxml", e);
+        this.LoadScene("UserWelcome.fxml", e);
+    }
+
+    public void StartSearchBar(String search){
+        searchField.setText(search);
     }
 
     @Override
