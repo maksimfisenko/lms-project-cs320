@@ -109,6 +109,14 @@ public class AdminAddBookController extends Controller {
         }
 
         bookDAO.addBook(book);
+
+        titleField.setText("");
+        isbnField.setText("");
+        numberField.setText("");
+        publisherField.setText("");
+        authorsField.setText("");
+        descriptionArea.setText("");
+
     }
 
     @FXML
