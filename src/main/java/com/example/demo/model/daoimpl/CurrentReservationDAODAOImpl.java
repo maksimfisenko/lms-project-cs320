@@ -1,8 +1,6 @@
 package com.example.demo.model.daoimpl;
 
 import com.example.demo.model.dao.CurrentReservationDAO;
-import com.example.demo.model.entities.Author;
-import com.example.demo.model.entities.Book;
 import com.example.demo.model.entities.CurrentReservation ;
 
 
@@ -10,7 +8,6 @@ import com.example.demo.model.entities.CurrentReservation ;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class CurrentReservationDAODAOImpl implements CurrentReservationDAO {
