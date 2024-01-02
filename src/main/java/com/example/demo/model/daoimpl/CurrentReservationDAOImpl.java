@@ -2,24 +2,21 @@ package com.example.demo.model.daoimpl;
 
 import com.example.demo.model.dao.CurrentReservationDAO;
 import com.example.demo.model.entities.CurrentReservation ;
-
-
-
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CurrentReservationDAODAOImpl implements CurrentReservationDAO {
+
+public class CurrentReservationDAOImpl implements CurrentReservationDAO {
     private final Connection connection ;
 
-
-    public CurrentReservationDAODAOImpl(Connection connection) {
+    public CurrentReservationDAOImpl(Connection connection) {
        this.connection = connection;
     }
 
     @Override
     public void addCurrentReservation(CurrentReservation currentReservation) {
+
         String query = "INSERT INTO current_reservations (book_id, reader_id, date_of_picking, num_of_days_reserved) VALUES (?, ?, ?, ?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -82,6 +79,27 @@ public class CurrentReservationDAODAOImpl implements CurrentReservationDAO {
     }
 
     @Override
+    public List<CurrentReservation> getCurrentReservationsByReaderId(int readerId) {
+
+        List<CurrentReservation> currentReservations = new ArrayList<>();
+
+        String query = "SELECT * FROM current_reservations WHERE reader_id = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, readerId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    currentReservations.add(mapResultSetToCurrentReservation(resultSet));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return currentReservations;
+    }
+
+    @Override
     public void updateCurrentReservation(CurrentReservation currentReservation) {
 
 
@@ -121,6 +139,7 @@ public class CurrentReservationDAODAOImpl implements CurrentReservationDAO {
     }
 
     private CurrentReservation mapResultSetToCurrentReservation(ResultSet resultSet) throws SQLException {
+
         BookDAOImpl book = new BookDAOImpl(connection);
         ReaderDAOImpl reader= new ReaderDAOImpl(connection);
 
@@ -130,7 +149,6 @@ public class CurrentReservationDAODAOImpl implements CurrentReservationDAO {
                 reader.getReaderById(resultSet.getInt("reader_id")),
                 resultSet.getDate("date_of_picking").toLocalDate(),
                 resultSet.getInt("num_of_days_reserved")
-
         );
     }
 

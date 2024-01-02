@@ -7,6 +7,7 @@ public interface CurrentReservationDAO {
     void addCurrentReservation(CurrentReservation currentReservation);
     CurrentReservation getCurrentReservationById(int id);
     List<CurrentReservation> getAllCurrentReservations();
+    List<CurrentReservation> getCurrentReservationsByReaderId(int readerId);
     void updateCurrentReservation(CurrentReservation currentReservation);
     void deleteCurrentReservation(int id);
 }

@@ -19,6 +19,9 @@ public abstract class Reservation {
         this.numOfDaysForReservation = numOfDaysForReservation;
     }
 
+    public Reservation() {
+    }
+
     public int getId() {
         return id;
     }
