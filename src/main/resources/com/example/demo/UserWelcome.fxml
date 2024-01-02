@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.control.UserWelcomeController">
+   <children>
+      <TextField fx:id="searchField" layoutX="30.0" layoutY="62.0" prefHeight="26.0" prefWidth="580.0" promptText="Search" />
+      <Label layoutX="278.0" layoutY="22.0" text="Welcome!">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="pastReservationButton" layoutX="257.0" layoutY="142.0" mnemonicParsing="false" onAction="#PastReservation" prefHeight="26.0" prefWidth="126.0" text="Past Reservations" />
+      <Label layoutX="284.0" layoutY="115.0" text="Reservations" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="currentReservationsButton" layoutX="257.0" layoutY="179.0" mnemonicParsing="false" onAction="#CurrentReservation" text="Current Reservations" />
+      <Button fx:id="backButton" mnemonicParsing="false" onAction="#Back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
