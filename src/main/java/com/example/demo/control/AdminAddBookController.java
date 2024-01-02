@@ -32,7 +32,7 @@ public class AdminAddBookController extends Controller {
     private ComboBox<String> conditionBox;
 
     public void Back (ActionEvent e) throws IOException {
-        this.LoadScene("AdminWelcome.fxml", e);
+        this.LoadScene("AdminBookManage.fxml", e);
     }
 
     public void Save (ActionEvent e) throws IOException {
@@ -42,8 +42,11 @@ public class AdminAddBookController extends Controller {
     @FXML
     public void initialize(){
         genreBox.setItems(genreList);
+        genreBox.setValue("Classic");
         conditionBox.setItems(conditionList);
+        conditionBox.setValue("Very Good");
         coverBox.setItems(coverList);
+        coverBox.setValue("Hardcover");
     }
 
 }
