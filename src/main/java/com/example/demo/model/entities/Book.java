@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class Book {
+
+    private int id;
     private String isbn;
     private String title;
     private String genre;
@@ -12,7 +14,28 @@ public class Book {
     private String coverType;
     private String publisher;
     private String condition;
+    private boolean isReserved;
     private List<Author> authors;
+
+    public Book() {
+        this.isReserved = false;
+    }
+
+    public boolean isReserved() {
+        return isReserved;
+    }
+
+    public void setReserved(boolean reserved) {
+        isReserved = reserved;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getIsbn() {
         return isbn;

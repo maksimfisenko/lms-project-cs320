@@ -95,7 +95,6 @@ public class AuthorDAOImplTest {
 
         Author updatedAuthor = authorDAO.getAuthorById(author.getId());
 
-        // Assert
         assertEquals("UpdatedName", updatedAuthor.getName());
         assertEquals("UpdatedSurname", updatedAuthor.getSurname());
     }
