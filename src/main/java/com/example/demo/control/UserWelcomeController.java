@@ -1,11 +1,22 @@
 package com.example.demo.control;
 
+import com.example.demo.HelloApplication;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class UserWelcomeController extends Controller {
 
+    @FXML
+    TextField searchField;
     public void Back(ActionEvent e) throws IOException{
         this.LoadScene("Login.fxml", e);
     }
@@ -15,5 +26,29 @@ public class UserWelcomeController extends Controller {
 
     public void CurrentReservation(ActionEvent e) throws IOException{
         this.LoadScene("UserCurrentReservations.fxml", e);
+    }
+
+    @FXML
+    public void onEnter(ActionEvent e) throws IOException {
+        if (!searchField.getText().isEmpty() && !searchField.getText().isBlank()) {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("BookSearch.fxml"));
+            Parent root = fxmlLoader.load();
+            BookSearchController bookSearchController = fxmlLoader.getController();
+            bookSearchController.StartSearchBar(searchField.getText());
+
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 640, 480);
+
+            stage.setTitle("Welcome!");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        }
+        else{
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.setHeaderText("Search Error");
+            error.setContentText("Empty search is not allowed!");
+            error.showAndWait();
+        }
     }
 }

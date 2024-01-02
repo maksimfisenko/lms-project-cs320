@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="cancelButton" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.FXML.AdminReservationManage">
+<AnchorPane fx:id="cancelButton" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.control.AdminReservationManageController">
    <children>
       <Label layoutX="212.0" layoutY="24.0" text="Reservations Managment">
          <font>
@@ -32,5 +31,10 @@
       </TableView>
       <Button fx:id="saveButton" layoutX="14.0" layoutY="441.0" mnemonicParsing="false" text="Save Changes" />
       <Button layoutX="526.0" layoutY="441.0" mnemonicParsing="false" text="Cancel Changes" />
+      <Button fx:id="backButton" layoutY="10.0" mnemonicParsing="false" onAction="#Back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

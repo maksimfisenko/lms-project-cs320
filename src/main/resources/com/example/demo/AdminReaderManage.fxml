@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.FXML.AdminReaderManage">
+<AnchorPane maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.control.AdminReaderManageController">
    <children>
       <TextField fx:id="searchField" layoutX="30.0" layoutY="62.0" prefHeight="26.0" prefWidth="580.0" promptText="Search User" />
       <Label layoutX="257.0" layoutY="22.0" text="User Managment">
@@ -29,5 +28,10 @@
       </TableView>
       <Button fx:id="strikeUserButton" layoutX="14.0" layoutY="441.0" mnemonicParsing="false" text="Give Strike" />
       <Button fx:id="banUserButton" layoutX="562.0" layoutY="441.0" mnemonicParsing="false" text="Ban User" />
+      <Button fx:id="backButton" layoutY="8.0" mnemonicParsing="false" onAction="#Back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

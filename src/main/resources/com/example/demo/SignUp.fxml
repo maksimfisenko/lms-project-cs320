@@ -22,7 +22,7 @@
       <PasswordField fx:id="passwordField" layoutX="244.0" layoutY="240.0" promptText="Password" />
       <PasswordField fx:id="passwordCheckField" layoutX="244.0" layoutY="276.0" promptText="Confirm Password" />
       <DatePicker fx:id="dateField" layoutX="243.0" layoutY="314.0" prefHeight="26.0" prefWidth="150.0" promptText="Date of Birth" />
-      <Button fx:id="backButton" mnemonicParsing="false" onAction="#Back" prefHeight="59.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
+      <Button fx:id="backButton" layoutY="10.0" mnemonicParsing="false" onAction="#Back" prefHeight="59.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
