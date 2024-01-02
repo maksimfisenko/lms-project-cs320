@@ -20,7 +20,7 @@ public class AdminDAOImpl implements AdminDAO {
     @Override
     public void addAdmin(Admin admin) {
 
-        String query = "INSERT INTO admins (login, password, name , surname ) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO admins (login, password, name, surname ) VALUES (?, ?, ?, ?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
@@ -122,14 +122,12 @@ public class AdminDAOImpl implements AdminDAO {
 
     private Admin mapResultSetToAdmin(ResultSet resultSet) throws SQLException {
 
-        Admin admin = new Admin(
+        return new Admin(
                 resultSet.getInt("id"),
                 resultSet.getString("login"),
                 resultSet.getString("password"),
                 resultSet.getString("name"),
                 resultSet.getString("surname")
         );
-
-        return admin;
     }
 }
