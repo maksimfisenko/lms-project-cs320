@@ -21,7 +21,7 @@
          </font>
       </Label>
       <Button fx:id="currentReservationsButton" layoutX="257.0" layoutY="179.0" mnemonicParsing="false" onAction="#CurrentReservation" text="Current Reservations" />
-      <Button fx:id="backButton" mnemonicParsing="false" onAction="#Back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
+      <Button fx:id="backButton" layoutY="8.0" mnemonicParsing="false" onAction="#Back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
