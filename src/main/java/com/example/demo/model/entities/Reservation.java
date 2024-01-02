@@ -82,4 +82,8 @@ public abstract class Reservation {
                 ", numOfDaysForReservation=" + numOfDaysForReservation +
                 '}';
     }
+
+    public char getReservationId() {
+        return 0;
+    }
 }
