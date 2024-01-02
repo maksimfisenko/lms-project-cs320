@@ -55,12 +55,23 @@ public class AdminBookManageController extends Controller implements Initializab
     ObservableList<BookSearchModel> bookSearchModelObservableList = FXCollections.observableArrayList();
 
 
-    public void Back (ActionEvent e) throws IOException {
+    public void back(ActionEvent e) throws IOException {
         this.LoadScene("AdminWelcome.fxml", e);
     }
 
-    public void NewBook(ActionEvent e) throws IOException{
+    public void newBook(ActionEvent e) throws IOException{
         this.LoadScene("AdminAddBook.fxml", e);
+    }
+
+    public void deleteBook(ActionEvent e) {
+        BookSearchModel bookSearchModel = bookTableView.getSelectionModel().getSelectedItem();
+        if (bookSearchModel != null) {
+
+            int id = bookSearchModel.getId();
+            bookDAO.deleteBook(id);
+
+            refreshTable();
+        }
     }
 
     @Override
@@ -83,31 +94,7 @@ public class AdminBookManageController extends Controller implements Initializab
             e.printStackTrace();
         }
 
-        List<Book> notReservedBooks = bookDAO.getNotReservedBooks();
-
-        for (Book book : notReservedBooks) {
-
-            bookSearchModelObservableList.add(new BookSearchModel(
-                    book.getId(),
-                    book.getTitle(),
-                    book.getAuthors(),
-                    book.getGenre(),
-                    book.getIsbn(),
-                    book.getPublisher(),
-                    book.getCondition(),
-                    book.getDescription()));
-        }
-
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-        authorColumn.setCellValueFactory(new PropertyValueFactory<>("authors"));
-        genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
-        isbnColumn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
-        publisherColumn.setCellValueFactory(new PropertyValueFactory<>("publisher"));
-        conditionColumn.setCellValueFactory(new PropertyValueFactory<>("condition"));
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-
-        bookTableView.setItems(bookSearchModelObservableList);
+        refreshTable();
 
         FilteredList<BookSearchModel> filteredData = new FilteredList<>(bookSearchModelObservableList, b -> true);
 
@@ -131,4 +118,30 @@ public class AdminBookManageController extends Controller implements Initializab
 
     }
 
+    public void refreshTable() {
+        List<Book> notReservedBooks = bookDAO.getNotReservedBooks();
+        bookSearchModelObservableList.clear();
+        for (Book book : notReservedBooks) {
+            bookSearchModelObservableList.add(new BookSearchModel(
+                    book.getId(),
+                    book.getTitle(),
+                    book.getAuthors(),
+                    book.getGenre(),
+                    book.getIsbn(),
+                    book.getPublisher(),
+                    book.getCondition(),
+                    book.getDescription()));
+        }
+
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        authorColumn.setCellValueFactory(new PropertyValueFactory<>("authors"));
+        genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        isbnColumn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
+        publisherColumn.setCellValueFactory(new PropertyValueFactory<>("publisher"));
+        conditionColumn.setCellValueFactory(new PropertyValueFactory<>("condition"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+
+        bookTableView.setItems(bookSearchModelObservableList);
+    }
 }
