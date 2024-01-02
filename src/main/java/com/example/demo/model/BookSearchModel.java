@@ -5,6 +5,7 @@ import com.example.demo.model.entities.Author;
 import java.util.List;
 
 public class BookSearchModel {
+    private int id;
     private String title;
     private List<Author> authors;
     private String genre;
@@ -13,8 +14,9 @@ public class BookSearchModel {
     private String condition;
     private String description;
 
-    public BookSearchModel(String title, List<Author> authors, String genre,
+    public BookSearchModel(int id, String title, List<Author> authors, String genre,
                            String isbn, String publisher, String condition, String description) {
+        this.id = id;
         this.title = title;
         this.authors = authors;
         this.genre = genre;
@@ -22,6 +24,14 @@ public class BookSearchModel {
         this.publisher = publisher;
         this.condition = condition;
         this.description = description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
