@@ -28,5 +28,10 @@
         </columns>
       </TableView>
       <Button fx:id="bookButton" layoutX="273.0" layoutY="433.0" mnemonicParsing="false" text="Book the Book" />
+      <Button fx:id="backButton" layoutY="8.0" mnemonicParsing="false" onAction="#Back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
