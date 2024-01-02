@@ -16,7 +16,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="searchResult" layoutY="120.0" prefHeight="300.0" prefWidth="640.0">
+      <TableView fx:id="bookTableView" layoutY="120.0" prefHeight="300.0" prefWidth="640.0">
          <columns>
             <TableColumn fx:id="titleColumn" prefWidth="75.0" text="Title" />
             <TableColumn fx:id="authorColumn" prefWidth="75.0" text="Author" />
