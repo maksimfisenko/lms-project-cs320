@@ -3,10 +3,7 @@ package com.example.demo.model.daoimpl;
 import com.example.demo.model.dao.AuthorDAO;
 import com.example.demo.model.entities.Author;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +27,13 @@ public class AuthorDAOImpl implements AuthorDAO {
             preparedStatement.setInt(4, author.getYearOfDeath());
 
             preparedStatement.executeUpdate();
+
+            Statement statement = connection.createStatement();
+            ResultSet generatedKeys = statement.executeQuery("SELECT last_insert_rowid()");
+            if (generatedKeys.next()) {
+                int generatedKey = generatedKeys.getInt(1);
+                author.setId(generatedKey);
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
