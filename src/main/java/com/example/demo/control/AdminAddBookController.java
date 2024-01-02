@@ -1,24 +1,20 @@
 package com.example.demo.control;
 
-<<<<<<< HEAD
 import com.example.demo.model.daoimpl.BookDAOImpl;
 import com.example.demo.model.entities.Book;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
-=======
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
->>>>>>> 86ba1a5a63533db6b94dbcb00e2f6225ac9ed040
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class AdminAddBookController extends Controller {
 
@@ -35,7 +31,6 @@ public class AdminAddBookController extends Controller {
     @FXML
     private TextField titleField;
     @FXML
-<<<<<<< HEAD
     private TextField isbnField;
     @FXML
     private TextField numberField;
@@ -44,18 +39,16 @@ public class AdminAddBookController extends Controller {
     @FXML
     private TextField authorsField;
     @FXML
-=======
->>>>>>> 86ba1a5a63533db6b94dbcb00e2f6225ac9ed040
     private ComboBox<String> genreBox;
     @FXML
     private ComboBox<String> coverBox;
     @FXML
     private ComboBox<String> conditionBox;
-<<<<<<< HEAD
     @FXML
     private TextArea descriptionArea;
 
     private BookDAOImpl bookDAO;
+    private Connection connection;
 
     public static boolean isPositiveInteger(String s) {
         if (s != null && !s.isEmpty()) {
@@ -79,14 +72,11 @@ public class AdminAddBookController extends Controller {
 
 
     public void back(ActionEvent e) throws IOException {
-=======
-
-    public void Back (ActionEvent e) throws IOException {
->>>>>>> 86ba1a5a63533db6b94dbcb00e2f6225ac9ed040
         this.LoadScene("AdminWelcome.fxml", e);
     }
 
     public void save(ActionEvent e) throws IOException {
+
         if (titleField.getText().isEmpty() || titleField.getText().isBlank()) {
             throwError("The name of the book cannot be empty.");
             return;
@@ -110,6 +100,14 @@ public class AdminAddBookController extends Controller {
         book.setCoverType(coverBox.getValue());
         book.setPublisher(publisherField.getText());
         book.setCondition(conditionBox.getValue());
+
+        try {
+            String databaseUrl = "jdbc:sqlite:src/main/resources/com/example/demo/library.db";
+            connection = DriverManager.getConnection(databaseUrl);
+            bookDAO = new BookDAOImpl(connection);
+        } catch (SQLException err) {
+            err.printStackTrace();
+        }
 
         bookDAO.addBook(book);
     }
