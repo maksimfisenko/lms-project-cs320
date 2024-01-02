@@ -30,6 +30,7 @@
       <ComboBox fx:id="coverBox" layoutX="199.0" layoutY="202.0" prefHeight="26.0" prefWidth="238.0" promptText="Cover Type" />
       <ComboBox fx:id="conditionBox" layoutX="199.0" layoutY="275.0" prefHeight="26.0" prefWidth="238.0" promptText="Condition" />
       <TextArea fx:id="descriptionArea" layoutX="201.0" layoutY="343.0" prefHeight="54.0" prefWidth="238.0" promptText="Description" wrapText="true" />
+
       <Button layoutX="295.0" layoutY="447.0" mnemonicParsing="false" onAction="#save" text="Save" />
    </children>
 </AnchorPane>
