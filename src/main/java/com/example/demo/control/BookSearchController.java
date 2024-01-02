@@ -45,8 +45,6 @@ public class BookSearchController extends Controller implements Initializable{
 
     ObservableList<BookSearchModel> bookSearchModelObservableList = FXCollections.observableArrayList();
 
-    @FXML
-    TextField searchField;
     public void Back (ActionEvent e) throws IOException {
         this.LoadScene("UserWelcome.fxml", e);
     }
