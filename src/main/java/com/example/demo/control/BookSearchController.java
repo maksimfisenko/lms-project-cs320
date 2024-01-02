@@ -18,6 +18,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -41,7 +44,11 @@ public class BookSearchController extends Controller implements Initializable{
     private TableColumn<BookSearchModel, String> descriptionColumn;
     @FXML
     private TextField searchField;
+
+    private Connection connection;
     private BookDAOImpl bookDAO;
+
+
 
     ObservableList<BookSearchModel> bookSearchModelObservableList = FXCollections.observableArrayList();
 
@@ -54,7 +61,15 @@ public class BookSearchController extends Controller implements Initializable{
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resource) {
+    public void initialize(URL url, ResourceBundle resource){
+
+        try {
+            String databaseUrl = "jdbc:sqlite:src/main/resources/com/example/demo/library.db";
+            connection = DriverManager.getConnection(databaseUrl);
+            bookDAO = new BookDAOImpl(connection);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         List<Book> notReservedBooks = bookDAO.getNotReservedBooks();
 
