@@ -1,11 +1,13 @@
 package com.example.demo.model.dao;
 
+import com.example.demo.model.entities.Reader ;
+
 import java.util.List;
 
 public interface ReaderDAO {
-    void addReader(ReaderDAO readerDAO);
-    ReaderDAO getReaderById(int id);
-    List<ReaderDAO> getAllReaders();
-    void updateReader(ReaderDAO readerDAO);
+    void addReader(Reader reader);
+    Reader getReaderById(int id);
+    List<Reader> getAllReaders();
+    void updateReader(Reader reader);
     void deleteReader(int id);
 }
