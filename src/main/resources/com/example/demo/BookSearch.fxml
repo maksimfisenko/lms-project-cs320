@@ -16,13 +16,13 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="searchResult" layoutY="120.0" prefHeight="300.0" prefWidth="640.0">
+      <TableView fx:id="bookTableView" layoutY="120.0" prefHeight="300.0" prefWidth="640.0">
         <columns>
           <TableColumn fx:id="titleColumn" editable="false" prefWidth="75.0" text="Title" />
           <TableColumn fx:id="authorColumn" editable="false" prefWidth="75.0" text="Author" />
             <TableColumn fx:id="genreColumn" editable="false" prefWidth="61.5999755859375" text="Genre" />
             <TableColumn fx:id="isbnColumn" editable="false" prefWidth="64.79998779296875" text="ISBN" />
-            <TableColumn fx:id="publsherColumn" editable="false" prefWidth="90.4000244140625" text="Publisher" />
+            <TableColumn fx:id="publisherColumn" editable="false" prefWidth="90.4000244140625" text="Publisher" />
             <TableColumn fx:id="conditionColumn" editable="false" prefWidth="63.20001220703125" text="Condition" />
             <TableColumn fx:id="descriptionColumn" editable="false" prefWidth="207.20001220703125" text="Description" />
         </columns>
