@@ -27,9 +27,9 @@ public class CurrentReservationDAODAOImpl implements CurrentReservationDAO {
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             preparedStatement.setInt(1, currentReservation.getBookReserved().getId());
-            preparedStatement.setInt(2, author.getSurname());
-            preparedStatement.setInt(3, author.getYearOfBirth());
-            preparedStatement.setInt(4, author.getYearOfDeath());
+//            preparedStatement.setInt(2, currentReservation.getSurname());
+//            preparedStatement.setInt(3, author.getYearOfBirth());
+//            preparedStatement.setInt(4, author.getYearOfDeath());
 
             preparedStatement.executeUpdate();
 
@@ -37,7 +37,7 @@ public class CurrentReservationDAODAOImpl implements CurrentReservationDAO {
             ResultSet generatedKeys = statement.executeQuery("SELECT last_insert_rowid()");
             if (generatedKeys.next()) {
                 int generatedKey = generatedKeys.getInt(1);
-                author.setId(generatedKey);
+//                author.setId(generatedKey);
             }
 
         } catch (SQLException e) {

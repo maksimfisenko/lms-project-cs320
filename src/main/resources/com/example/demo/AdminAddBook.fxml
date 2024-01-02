@@ -16,7 +16,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="backButton" layoutY="8.0" mnemonicParsing="false" onAction="#Back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
+      <Button fx:id="backButton" layoutY="8.0" mnemonicParsing="false" onAction="#back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -26,10 +26,10 @@
       <TextField fx:id="numberField" layoutX="199.0" layoutY="169.0" prefHeight="26.0" prefWidth="238.0" promptText="Number of Pages" />
       <TextField fx:id="publisherField" layoutX="199.0" layoutY="240.0" prefHeight="26.0" prefWidth="238.0" promptText="Pubisher" />
       <TextField fx:id="authorsField" layoutX="201.0" layoutY="308.0" prefHeight="26.0" prefWidth="238.0" promptText="Authors*" />
-      <ComboBox fx:id="genreField" layoutX="199.0" layoutY="134.0" prefHeight="26.0" prefWidth="238.0" promptText="Genre" />
-      <ComboBox fx:id="coverField" layoutX="199.0" layoutY="202.0" prefHeight="26.0" prefWidth="238.0" promptText="Cover Type" />
-      <ComboBox fx:id="conditionField" layoutX="199.0" layoutY="275.0" prefHeight="26.0" prefWidth="238.0" promptText="Condition" />
-      <TextArea fx:id="descriptionField" layoutX="201.0" layoutY="343.0" prefHeight="54.0" prefWidth="238.0" promptText="Description" wrapText="true" />
-      <Button layoutX="295.0" layoutY="447.0" mnemonicParsing="false" onAction="#Save" text="Save" />
+      <ComboBox fx:id="genreBox" layoutX="199.0" layoutY="134.0" prefHeight="26.0" prefWidth="238.0" promptText="Genre" />
+      <ComboBox fx:id="coverBox" layoutX="199.0" layoutY="202.0" prefHeight="26.0" prefWidth="238.0" promptText="Cover Type" />
+      <ComboBox fx:id="conditionBox" layoutX="199.0" layoutY="275.0" prefHeight="26.0" prefWidth="238.0" promptText="Condition" />
+      <TextArea fx:id="descriptionArea" layoutX="201.0" layoutY="343.0" prefHeight="54.0" prefWidth="238.0" promptText="Description" wrapText="true" />
+      <Button layoutX="295.0" layoutY="447.0" mnemonicParsing="false" onAction="#save" text="Save" />
    </children>
 </AnchorPane>
