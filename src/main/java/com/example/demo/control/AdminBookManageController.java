@@ -32,6 +32,8 @@ public class AdminBookManageController extends Controller implements Initializab
     @FXML
     private TableView<BookSearchModel> bookTableView;
     @FXML
+    private TableColumn<BookSearchModel, Integer> idColumn;
+    @FXML
     private TableColumn<BookSearchModel, String> titleColumn;
     @FXML
     private TableColumn<BookSearchModel, List<Author>> authorColumn;
@@ -48,7 +50,6 @@ public class AdminBookManageController extends Controller implements Initializab
     @FXML
     private TextField searchField;
 
-    private Connection connection;
     private BookDAOImpl bookDAO;
 
     ObservableList<BookSearchModel> bookSearchModelObservableList = FXCollections.observableArrayList();
@@ -76,7 +77,7 @@ public class AdminBookManageController extends Controller implements Initializab
 
         try {
             String databaseUrl = "jdbc:sqlite:src/main/resources/com/example/demo/library.db";
-            connection = DriverManager.getConnection(databaseUrl);
+            Connection connection = DriverManager.getConnection(databaseUrl);
             bookDAO = new BookDAOImpl(connection);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -87,6 +88,7 @@ public class AdminBookManageController extends Controller implements Initializab
         for (Book book : notReservedBooks) {
 
             bookSearchModelObservableList.add(new BookSearchModel(
+                    book.getId(),
                     book.getTitle(),
                     book.getAuthors(),
                     book.getGenre(),
@@ -96,6 +98,7 @@ public class AdminBookManageController extends Controller implements Initializab
                     book.getDescription()));
         }
 
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         authorColumn.setCellValueFactory(new PropertyValueFactory<>("authors"));
         genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));

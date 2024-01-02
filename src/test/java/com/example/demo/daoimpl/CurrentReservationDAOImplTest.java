@@ -101,7 +101,7 @@ public class CurrentReservationDAOImplTest {
     public void testGetCurrentReservationsById() {
      // do
     }
-}
+
 
     @Test
     public void testUpdateCurrentReservation() {
@@ -140,6 +140,6 @@ public class CurrentReservationDAOImplTest {
 //        Admin deletedAdmin = adminDAO.getAdminById(admin.getId());
 //
 //        assertNull(deletedAdmin);
-//    }
+    }
 
 }
