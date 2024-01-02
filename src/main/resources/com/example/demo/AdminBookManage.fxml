@@ -18,13 +18,13 @@
       </Label>
       <TableView fx:id="searchResult" layoutY="120.0" prefHeight="300.0" prefWidth="640.0">
          <columns>
-            <TableColumn prefWidth="75.0" text="Title" />
-            <TableColumn prefWidth="75.0" text="Author" />
-            <TableColumn prefWidth="61.5999755859375" text="Genre" />
-            <TableColumn prefWidth="64.79998779296875" text="ISBN" />
-            <TableColumn prefWidth="90.4000244140625" text="Publisher" />
-            <TableColumn prefWidth="63.20001220703125" text="Condition" />
-            <TableColumn prefWidth="207.20001220703125" text="Description" />
+            <TableColumn fx:id="titleColumn" prefWidth="75.0" text="Title" />
+            <TableColumn fx:id="authorColumn" prefWidth="75.0" text="Author" />
+            <TableColumn fx:id="genreColumn" prefWidth="61.5999755859375" text="Genre" />
+            <TableColumn fx:id="isbnColumn" prefWidth="64.79998779296875" text="ISBN" />
+            <TableColumn fx:id="publisherColumn" prefWidth="90.4000244140625" text="Publisher" />
+            <TableColumn fx:id="conditionColumn" prefWidth="63.20001220703125" text="Condition" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="207.20001220703125" text="Description" />
          </columns>
       </TableView>
       <Button layoutX="14.0" layoutY="441.0" mnemonicParsing="false" text="Save Changes" />

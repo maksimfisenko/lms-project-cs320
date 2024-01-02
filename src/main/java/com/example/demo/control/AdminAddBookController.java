@@ -48,7 +48,6 @@ public class AdminAddBookController extends Controller {
     private TextArea descriptionArea;
 
     private BookDAOImpl bookDAO;
-    private Connection connection;
 
     public static boolean isPositiveInteger(String s) {
         if (s != null && !s.isEmpty()) {
@@ -103,7 +102,7 @@ public class AdminAddBookController extends Controller {
 
         try {
             String databaseUrl = "jdbc:sqlite:src/main/resources/com/example/demo/library.db";
-            connection = DriverManager.getConnection(databaseUrl);
+            Connection connection = DriverManager.getConnection(databaseUrl);
             bookDAO = new BookDAOImpl(connection);
         } catch (SQLException err) {
             err.printStackTrace();
@@ -113,10 +112,13 @@ public class AdminAddBookController extends Controller {
     }
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         genreBox.setItems(genreList);
+        genreBox.setValue("Classic");
         conditionBox.setItems(conditionList);
+        conditionBox.setValue("Very Good");
         coverBox.setItems(coverList);
+        coverBox.setValue("Hardcover");
     }
 
 }
