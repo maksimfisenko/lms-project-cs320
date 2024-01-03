@@ -135,7 +135,7 @@ public class AdminBookManageController extends Controller implements Initializab
 
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-        authorColumn.setCellValueFactory(new PropertyValueFactory<>("authors"));
+        authorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
         genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
         isbnColumn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
         publisherColumn.setCellValueFactory(new PropertyValueFactory<>("publisher"));
