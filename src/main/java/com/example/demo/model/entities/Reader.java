@@ -15,6 +15,12 @@ public class Reader extends User{
         this.reservations = new ArrayList<>();
     }
 
+    public Reader() {
+        super();
+        this.numOfStrikes = 0;
+        this.reservations = new ArrayList<>();
+    }
+
     public int getNumOfStrikes() {
         return numOfStrikes;
     }

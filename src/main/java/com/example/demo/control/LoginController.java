@@ -24,11 +24,9 @@ public class LoginController extends Controller {
     public void SignIn(ActionEvent e) throws IOException {
         if (loginField.getText().equals("admin") && passwordField.getText().equals("admin")){
             this.LoadScene("AdminWelcome.fxml", e);
-//            System.out.println("Welcome Admin");
         }
         else if (loginField.getText().equals("reader") && passwordField.getText().equals("reader")){
             this.LoadScene("UserWelcome.fxml", e);
-//            System.out.println("Welcome Reader");
         }
         else{
             Alert error = new Alert(Alert.AlertType.ERROR);
