@@ -55,11 +55,11 @@ public class LoginController extends Controller {
         }
 
         if (adminDAO.adminExists(loginField.getText(), passwordField.getText())) {
-            this.LoadScene("AdminWelcome.fxml", e);
+            this.LoadScene("AdminWelcome.fxml", e, loginField.getText());
             return;
         }
         if (readerDAO.readerExists(loginField.getText(), passwordField.getText())) {
-            this.LoadScene("UserWelcome.fxml", e);
+            this.LoadScene("UserWelcome.fxml", e, loginField.getText());
             return;
         }
 

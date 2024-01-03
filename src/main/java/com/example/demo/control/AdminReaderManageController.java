@@ -46,7 +46,7 @@ public class AdminReaderManageController  extends Controller implements Initiali
 
 
     public void Back (ActionEvent e) throws IOException {
-        this.LoadScene("AdminWelcome.fxml", e);
+        this.LoadScene("AdminWelcome.fxml", e, this.getLoginInfo());
     }
 
     @Override

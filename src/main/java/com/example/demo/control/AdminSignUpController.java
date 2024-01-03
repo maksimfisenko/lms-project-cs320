@@ -37,7 +37,7 @@ public class AdminSignUpController extends Controller {
     }
 
     public void back(ActionEvent e) throws IOException{
-        this.LoadScene("AdminWelcome.fxml", e);
+        this.LoadScene("AdminWelcome.fxml", e, this.getLoginInfo());
     }
 
     public void save(ActionEvent e) throws IOException {

@@ -21,11 +21,11 @@ public class UserWelcomeController extends Controller {
         this.LoadScene("Login.fxml", e);
     }
     public void PastReservation(ActionEvent e) throws IOException{
-        this.LoadScene("UserPastReservations.fxml", e);
+        this.LoadScene("UserPastReservations.fxml", e, this.getLoginInfo());
     }
 
     public void CurrentReservation(ActionEvent e) throws IOException{
-        this.LoadScene("UserCurrentReservations.fxml", e);
+        this.LoadScene("UserCurrentReservations.fxml", e, this.getLoginInfo());
     }
 
     @FXML
@@ -35,6 +35,7 @@ public class UserWelcomeController extends Controller {
             Parent root = fxmlLoader.load();
             BookSearchController bookSearchController = fxmlLoader.getController();
             bookSearchController.StartSearchBar(searchField.getText());
+            bookSearchController.setLoginInfo(this.getLoginInfo());
 
             Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             Scene scene = new Scene(root, 640, 480);

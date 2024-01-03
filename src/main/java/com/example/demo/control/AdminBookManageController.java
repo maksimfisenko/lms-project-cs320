@@ -56,11 +56,11 @@ public class AdminBookManageController extends Controller implements Initializab
 
 
     public void back(ActionEvent e) throws IOException {
-        this.LoadScene("AdminWelcome.fxml", e);
+        this.LoadScene("AdminWelcome.fxml", e, this.getLoginInfo());
     }
 
     public void newBook(ActionEvent e) throws IOException{
-        this.LoadScene("AdminAddBook.fxml", e);
+        this.LoadScene("AdminAddBook.fxml", e, this.getLoginInfo());
     }
 
     public void deleteBook(ActionEvent e) {
