@@ -14,14 +14,14 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="pastReservationsTable" layoutY="86.0" prefHeight="394.0" prefWidth="640.0">
+      <TableView fx:id="tableView" layoutY="86.0" prefHeight="394.0" prefWidth="640.0">
         <columns>
-            <TableColumn fx:id="idColumn" prefWidth="75.0" text="Id" />
-          <TableColumn fx:id="datePickedColumn" editable="false" prefWidth="76.7999267578125" text="Date Picked" />
-            <TableColumn fx:id="dateReturnedColumn" editable="false" prefWidth="113.60009765625" text="Date Returned" />
-          <TableColumn fx:id="bookColumn" editable="false" prefWidth="67.199951171875" text="Book Title" />
-            <TableColumn fx:id="statusColumn" editable="false" prefWidth="94.39996337890625" text="Strike Status" />
-            <TableColumn fx:id="descriptionColumn" prefWidth="211.20001220703125" text="Strike Description" />
+            <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="datePicked" editable="false" prefWidth="76.7999267578125" text="Date Picked" />
+            <TableColumn fx:id="dateReturned" editable="false" prefWidth="113.60009765625" text="Date Returned" />
+          <TableColumn fx:id="bookTitle" editable="false" prefWidth="67.199951171875" text="Book Title" />
+            <TableColumn fx:id="strikeIssued" editable="false" prefWidth="94.39996337890625" text="Strike Status" />
+            <TableColumn fx:id="strikeDescription" prefWidth="211.20001220703125" text="Strike Description" />
         </columns>
       </TableView>
       <Button fx:id="backButton" layoutY="6.0" mnemonicParsing="false" onAction="#Back" prefHeight="59.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">

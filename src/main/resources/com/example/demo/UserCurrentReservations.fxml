@@ -14,13 +14,13 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="currentReservationsTable" layoutY="84.0" prefHeight="398.0" prefWidth="640.0">
+      <TableView fx:id="tableView" layoutY="84.0" prefHeight="398.0" prefWidth="640.0">
         <columns>
-            <TableColumn fx:id="idColumn" editable="false" prefWidth="47.999969482421875" text="Id" />
-          <TableColumn fx:id="bookColumn" editable="false" prefWidth="112.00003051757812" text="Book Title" />
-            <TableColumn fx:id="conditionColumn" editable="false" prefWidth="138.40008544921875" text="Condition Picked" />
-            <TableColumn fx:id="dateColumn" editable="false" prefWidth="166.40008544921875" text="Date Picked" />
-            <TableColumn fx:id="deadlineColumn" editable="false" prefWidth="179.199951171875" text="Deadline to return" />
+            <TableColumn fx:id="id" editable="false" prefWidth="47.999969482421875" text="Id" />
+          <TableColumn fx:id="bookTitle" editable="false" prefWidth="112.00003051757812" text="Book Title" />
+            <TableColumn fx:id="bookCondition" editable="false" prefWidth="138.40008544921875" text="Condition Picked" />
+            <TableColumn fx:id="datePicked" editable="false" prefWidth="166.40008544921875" text="Date Picked" />
+            <TableColumn fx:id="deadline" editable="false" prefWidth="179.199951171875" text="Deadline to return" />
         </columns>
       </TableView>
       <Button fx:id="backButton" layoutY="6.0" mnemonicParsing="false" onAction="#Back" prefHeight="59.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">

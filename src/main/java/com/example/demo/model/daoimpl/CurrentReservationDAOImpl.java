@@ -112,6 +112,27 @@ public class CurrentReservationDAOImpl implements CurrentReservationDAO {
     }
 
     @Override
+    public List<CurrentReservation> getCurrentReservationsByReaderIdNotNull(int readerId) {
+
+        List<CurrentReservation> currentReservations = new ArrayList<>();
+
+        String query = "SELECT * FROM current_reservations WHERE reader_id = ? AND date_of_picking IS NOT NULL";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, readerId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    currentReservations.add(mapResultSetToCurrentReservation(resultSet));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return currentReservations;
+    }
+
+    @Override
     public void updateCurrentReservation(CurrentReservation currentReservation) {
 
 

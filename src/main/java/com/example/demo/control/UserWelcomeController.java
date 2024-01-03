@@ -25,7 +25,17 @@ public class UserWelcomeController extends Controller {
     }
 
     public void CurrentReservation(ActionEvent e) throws IOException{
-        this.LoadScene("UserCurrentReservations.fxml", e, this.getLoginInfo());
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("UserCurrentReservations.fxml"));
+        Parent root1 = fxmlLoader.load();
+        UserCurrentReservationController controller = fxmlLoader.getController();
+        controller.setLoginInfo(this.getLoginInfo());
+        controller.test();
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root1, 640, 480);
+        stage.setTitle("Welcome!");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
     }
 
     @FXML
