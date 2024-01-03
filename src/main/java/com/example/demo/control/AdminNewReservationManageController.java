@@ -1,7 +1,6 @@
 package com.example.demo.control;
 
 import com.example.demo.model.NewReservationModel;
-import com.example.demo.model.UserSearchModel;
 import com.example.demo.model.daoimpl.BookDAOImpl;
 import com.example.demo.model.daoimpl.CurrentReservationDAOImpl;
 import com.example.demo.model.entities.Book;
