@@ -15,7 +15,7 @@ public class Book {
     private String publisher;
     private String condition;
     private boolean isReserved;
-    private List<Author> authors;
+    private String author;
 
     public Book() {
         this.isReserved = false;
@@ -101,12 +101,12 @@ public class Book {
         this.condition = condition;
     }
 
-    public List<Author> getAuthors() {
-        return authors;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     @Override
@@ -114,12 +114,12 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return numOfPages == book.numOfPages && Objects.equals(isbn, book.isbn) && Objects.equals(title, book.title) && Objects.equals(genre, book.genre) && Objects.equals(description, book.description) && Objects.equals(coverType, book.coverType) && Objects.equals(publisher, book.publisher) && Objects.equals(condition, book.condition) && Objects.equals(authors, book.authors);
+        return numOfPages == book.numOfPages && Objects.equals(isbn, book.isbn) && Objects.equals(title, book.title) && Objects.equals(genre, book.genre) && Objects.equals(description, book.description) && Objects.equals(coverType, book.coverType) && Objects.equals(publisher, book.publisher) && Objects.equals(condition, book.condition) && Objects.equals(author, book.author);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isbn, title, genre, numOfPages, description, coverType, publisher, condition, authors);
+        return Objects.hash(isbn, title, genre, numOfPages, description, coverType, publisher, condition, author);
     }
 
     @Override
@@ -133,7 +133,7 @@ public class Book {
                 ", coverType='" + coverType + '\'' +
                 ", publisher='" + publisher + '\'' +
                 ", condition='" + condition + '\'' +
-                ", authors=" + authors +
+                ", authors=" + author +
                 '}';
     }
 }
