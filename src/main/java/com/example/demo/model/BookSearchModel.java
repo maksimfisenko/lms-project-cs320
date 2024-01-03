@@ -1,9 +1,5 @@
 package com.example.demo.model;
 
-import com.example.demo.model.entities.Author;
-
-import java.util.List;
-
 public class BookSearchModel {
     private int id;
     private String title;
@@ -46,7 +42,7 @@ public class BookSearchModel {
         return author;
     }
 
-    public void setAuthors(String author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 

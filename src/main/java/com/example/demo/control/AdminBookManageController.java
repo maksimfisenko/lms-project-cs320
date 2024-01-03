@@ -2,7 +2,6 @@ package com.example.demo.control;
 
 import com.example.demo.model.BookSearchModel;
 import com.example.demo.model.daoimpl.BookDAOImpl;
-import com.example.demo.model.entities.Author;
 import com.example.demo.model.entities.Book;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,14 +10,13 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.Callback;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -36,7 +34,7 @@ public class AdminBookManageController extends Controller implements Initializab
     @FXML
     private TableColumn<BookSearchModel, String> titleColumn;
     @FXML
-    private TableColumn<BookSearchModel, List<Author>> authorColumn;
+    private TableColumn<BookSearchModel, String> authorColumn;
     @FXML
     private TableColumn<BookSearchModel, String> genreColumn;
     @FXML
@@ -74,6 +72,27 @@ public class AdminBookManageController extends Controller implements Initializab
         }
     }
 
+    public void saveBook(ActionEvent e){
+        BookSearchModel bookSearchModel = bookTableView.getSelectionModel().getSelectedItem();
+        if (bookSearchModel != null){
+
+            int id = bookSearchModel.getId();
+            Book book = bookDAO.getBookById(id);
+            book.setTitle(bookSearchModel.getTitle());
+            book.setAuthor(bookSearchModel.getAuthor());
+            book.setGenre(bookSearchModel.getGenre());
+            book.setCondition(bookSearchModel.getCondition());
+            book.setDescription(bookSearchModel.getDescription());
+
+            bookDAO.updateBook(book);
+            refreshTable();
+        }
+    }
+
+    public void cancelButton(ActionEvent e){
+        refreshTable();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resource){
 
@@ -84,6 +103,7 @@ public class AdminBookManageController extends Controller implements Initializab
         conditionColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(
                 "Very Good", "Good", "Acceptable", "Not Acceptable")));
         descriptionColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        authorColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
 
         try {
@@ -109,6 +129,31 @@ public class AdminBookManageController extends Controller implements Initializab
                 return bookSearchModel.getTitle().toLowerCase().contains(searchKeyword);
 
             });
+        });
+
+        titleColumn.setOnEditCommit(event -> {
+            BookSearchModel bookSearchModel = event.getRowValue();
+            bookSearchModel.setTitle(event.getNewValue());
+        });
+
+        authorColumn.setOnEditCommit(event -> {
+            BookSearchModel bookSearchModel = event.getRowValue();
+            bookSearchModel.setAuthor(event.getNewValue());
+        });
+
+        descriptionColumn.setOnEditCommit(event -> {
+            BookSearchModel bookSearchModel = event.getRowValue();
+            bookSearchModel.setDescription(event.getNewValue());
+        });
+
+        genreColumn.setOnEditCommit(event -> {
+            BookSearchModel bookSearchModel = event.getRowValue();
+            bookSearchModel.setGenre(event.getNewValue());
+        });
+
+        conditionColumn.setOnEditCommit(event -> {
+            BookSearchModel bookSearchModel = event.getRowValue();
+            bookSearchModel.setCondition(event.getNewValue());
         });
 
         SortedList<BookSearchModel> sortedData = new SortedList<>(filteredData);
