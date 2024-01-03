@@ -112,7 +112,6 @@ public class BookSearchController extends Controller implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resource){
-
         try {
             String databaseUrl = "jdbc:sqlite:src/main/resources/com/example/demo/library.db";
             Connection connection = DriverManager.getConnection(databaseUrl);

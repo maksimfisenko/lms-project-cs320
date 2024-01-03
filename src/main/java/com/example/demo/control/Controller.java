@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.Console;
 import java.io.IOException;
 
 public class Controller {
@@ -26,16 +27,15 @@ public class Controller {
 
     public void LoadScene(String title, ActionEvent e, String login) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(title));
-        root = fxmlLoader.load();
+        Parent root1 = fxmlLoader.load();
         Controller controller = (Controller) fxmlLoader.getController();
         controller.setLoginInfo(login);
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 640, 480);
+        Scene scene = new Scene(root1, 640, 480);
         stage.setTitle("Welcome!");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-//        System.out.println(login);
     }
 
     public void setLoginInfo(String login){
