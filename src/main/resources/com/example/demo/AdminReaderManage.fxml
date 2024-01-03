@@ -26,8 +26,8 @@
             <TableColumn fx:id="banColumn" prefWidth="124.0" text="Ban Status" />
         </columns>
       </TableView>
-      <Button fx:id="strikeUserButton" layoutX="14.0" layoutY="441.0" mnemonicParsing="false" text="Give Strike" />
-      <Button fx:id="banUserButton" layoutX="562.0" layoutY="441.0" mnemonicParsing="false" text="Ban User" />
+      <Button fx:id="strikeUserButton" layoutX="14.0" layoutY="441.0" mnemonicParsing="false" onAction="#giveStrike" text="Give Strike" />
+      <Button fx:id="banUserButton" layoutX="562.0" layoutY="441.0" mnemonicParsing="false" onAction="#banReader" text="Ban User" />
       <Button fx:id="backButton" layoutY="8.0" mnemonicParsing="false" onAction="#Back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
          <font>
             <Font name="System Bold" size="20.0" />

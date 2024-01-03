@@ -121,6 +121,25 @@ public class ReaderDAOImpl implements ReaderDAO {
         }
     }
 
+    @Override
+    public Reader getReaderByLogin(String login) {
+        String query = "SELECT * FROM readers WHERE login = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, login);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return mapResultSetToReader(resultSet);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
     private Reader mapResultSetToReader(ResultSet resultSet) throws SQLException {
 
         Reader reader = new Reader(
