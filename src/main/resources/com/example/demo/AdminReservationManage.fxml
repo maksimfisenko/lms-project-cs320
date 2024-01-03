@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -24,11 +26,13 @@
             <TableColumn fx:id="deadlineColumn" editable="false" prefWidth="181.5999755859375" text="Deadline to return" />
         </columns>
       </TableView>
-      <Button fx:id="endButton" layoutX="275.0" layoutY="440.0" mnemonicParsing="false" onAction="#endReservation" text="End Reservation" />
+      <Button fx:id="endButton" layoutX="15.0" layoutY="440.0" mnemonicParsing="false" onAction="#endReservation" text="End Reservation" />
       <Button fx:id="backButton" layoutY="10.0" mnemonicParsing="false" onAction="#back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
+      <CheckBox fx:id="strikeBox" layoutX="543.0" layoutY="444.0" mnemonicParsing="false" text="Strike issue" />
+      <TextField fx:id="strikeField" layoutX="235.0" layoutY="440.0" promptText="Strike Info" />
    </children>
 </AnchorPane>
