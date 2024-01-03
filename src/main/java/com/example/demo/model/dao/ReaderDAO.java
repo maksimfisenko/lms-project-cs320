@@ -11,5 +11,6 @@ public interface ReaderDAO {
     void updateReader(Reader reader);
     void deleteReader(int id);
     boolean readerExists(String login, String password);
+    boolean loginCheck(String login);
     Reader getReaderByLogin(String id);
 }
