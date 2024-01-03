@@ -18,6 +18,9 @@ public class PastReservation extends Reservation {
         this.bookConditionOnReturn = bookConditionOnReturn;
     }
 
+    public PastReservation() {
+    }
+
     public LocalDate getDateOfReturn() {
         return dateOfReturn;
     }

@@ -8,4 +8,5 @@ public interface PastReservationDAO {
     List<PastReservation> getAllPastReservations();
     void updatePastReservation(PastReservation pastReservation);
     void deletePastReservation(int id);
+    List<PastReservation> getPastReservationsByReaderId(int readerId);
 }

@@ -1,6 +1,7 @@
 package com.example.demo.model.daoimpl;
 
 import com.example.demo.model.dao.PastReservationDAO;
+import com.example.demo.model.entities.CurrentReservation;
 import com.example.demo.model.entities.PastReservation;
 
 import java.sql.*;
@@ -19,7 +20,7 @@ public class PastReservationDAOImpl implements PastReservationDAO {
     @Override
     public void addPastReservation(PastReservation pastReservation) {
 
-        String query = "INSERT INTO past_reservations (book_id, reader_id, date_of_picking, num_of_days_reserved, date_of_return ,strike_is_issued , strike_description ,book_condition_on_return) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO past_reservations (book_id, reader_id, date_of_picking, num_of_days_reserved, date_of_return, strike_is_issued, strike_description, book_condition_on_return) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
@@ -107,6 +108,27 @@ public class PastReservationDAOImpl implements PastReservationDAO {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public List<PastReservation> getPastReservationsByReaderId(int readerId) {
+
+        List<PastReservation> pastReservations = new ArrayList<>();
+
+        String query = "SELECT * FROM past_reservations WHERE reader_id = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, readerId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    pastReservations.add(mapResultSetToPastReservation(resultSet));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return pastReservations;
     }
 
     @Override

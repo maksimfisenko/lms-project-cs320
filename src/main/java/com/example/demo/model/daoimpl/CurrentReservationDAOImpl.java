@@ -1,7 +1,9 @@
 package com.example.demo.model.daoimpl;
 
 import com.example.demo.model.dao.CurrentReservationDAO;
+import com.example.demo.model.entities.Book;
 import com.example.demo.model.entities.CurrentReservation ;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +21,16 @@ public class CurrentReservationDAOImpl implements CurrentReservationDAO {
 
         String query = "INSERT INTO current_reservations (book_id, reader_id, date_of_picking, num_of_days_reserved) VALUES (?, ?, ?, ?)";
 
+        BookDAOImpl bookDAO = new BookDAOImpl(connection);
+        Book book = bookDAO.getBookById(currentReservation.getBookReserved().getId());
+        book.setReserved(true);
+        bookDAO.updateBook(book);
+
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             preparedStatement.setInt(1, currentReservation.getBookReserved().getId());
             preparedStatement.setInt(2, currentReservation.getReader().getId());
-            preparedStatement.setDate(3,java.sql.Date.valueOf( currentReservation.getDateOfPicking()));
+            preparedStatement.setDate(3,java.sql.Date.valueOf(currentReservation.getDateOfPicking()));
             preparedStatement.setInt(4, currentReservation.getNumOfDaysForReservation());
 
             preparedStatement.executeUpdate();
@@ -67,6 +74,7 @@ public class CurrentReservationDAOImpl implements CurrentReservationDAO {
         String query = "SELECT * FROM current_reservations";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query);
+
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
             while (resultSet.next()) {
@@ -126,6 +134,12 @@ public class CurrentReservationDAOImpl implements CurrentReservationDAO {
     public void deleteCurrentReservation(int id) {
 
         String query = "DELETE FROM current_reservations WHERE id = ?";
+
+        CurrentReservation reservation = getCurrentReservationById(id);
+        BookDAOImpl bookDAO = new BookDAOImpl(connection);
+        Book book = bookDAO.getBookById(reservation.getBookReserved().getId());
+        book.setReserved(false);
+        bookDAO.updateBook(book);
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
