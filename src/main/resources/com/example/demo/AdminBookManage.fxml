@@ -28,9 +28,9 @@
             <TableColumn fx:id="descriptionColumn" prefWidth="132.0" text="Description" />
          </columns>
       </TableView>
-      <Button layoutX="14.0" layoutY="441.0" mnemonicParsing="false" text="Save Changes" />
+      <Button layoutX="14.0" layoutY="441.0" mnemonicParsing="false" onAction="#saveBook" text="Save Changes" />
       <Button layoutX="159.0" layoutY="441.0" mnemonicParsing="false" onAction="#deleteBook" text="Delete Book" />
-      <Button layoutX="526.0" layoutY="441.0" mnemonicParsing="false" text="Cancel Changes" />
+      <Button layoutX="526.0" layoutY="441.0" mnemonicParsing="false" onAction="#cancelButton" text="Cancel Changes" />
       <Button fx:id="backButton" layoutX="-3.0" layoutY="8.0" mnemonicParsing="false" onAction="#back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
          <font>
             <Font name="System Bold" size="20.0" />
