@@ -10,4 +10,5 @@ public interface AdminDAO {
     List<Admin> getAllAdmins();
     void updateAdmin(Admin admin);
     void deleteAdmin(int id);
+    boolean adminExists(String login, String password);
 }

@@ -1,11 +1,8 @@
 package com.example.demo.daoimpl;
 
-import com.example.demo.model.dao.CurrentReservationDAO;
-import com.example.demo.model.daoimpl.AdminDAOImpl;
 import com.example.demo.model.daoimpl.BookDAOImpl;
 import com.example.demo.model.daoimpl.CurrentReservationDAOImpl;
 import com.example.demo.model.daoimpl.ReaderDAOImpl;
-import com.example.demo.model.entities.Admin;
 import com.example.demo.model.entities.Book;
 import com.example.demo.model.entities.CurrentReservation;
 import com.example.demo.model.entities.Reader;

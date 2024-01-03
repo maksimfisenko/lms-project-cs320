@@ -104,6 +104,23 @@ public class ReaderDAOImpl implements ReaderDAO {
         }
     }
 
+    @Override
+    public boolean readerExists(String login, String password) {
+        String query = "SELECT * FROM readers WHERE login = ? AND password = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, password);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                return resultSet.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     private Reader mapResultSetToReader(ResultSet resultSet) throws SQLException {
 
         Reader reader = new Reader(

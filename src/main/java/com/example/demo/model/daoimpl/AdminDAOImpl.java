@@ -120,6 +120,23 @@ public class AdminDAOImpl implements AdminDAO {
 
     }
 
+    @Override
+    public boolean adminExists(String login, String password) {
+        String query = "SELECT * FROM admins WHERE login = ? AND password = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, password);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                return resultSet.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     private Admin mapResultSetToAdmin(ResultSet resultSet) throws SQLException {
 
         return new Admin(
