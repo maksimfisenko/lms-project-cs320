@@ -2,15 +2,23 @@ package com.example.demo.control;
 
 import com.example.demo.model.NewReservationModel;
 import com.example.demo.model.ReservationsModel;
+import com.example.demo.model.daoimpl.BookDAOImpl;
 import com.example.demo.model.daoimpl.CurrentReservationDAOImpl;
+import com.example.demo.model.daoimpl.PastReservationDAOImpl;
+import com.example.demo.model.daoimpl.ReaderDAOImpl;
+import com.example.demo.model.entities.Book;
 import com.example.demo.model.entities.CurrentReservation;
+import com.example.demo.model.entities.PastReservation;
+import com.example.demo.model.entities.Reader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
@@ -38,8 +46,15 @@ public class AdminReservationManageController extends Controller implements Init
     private TableColumn<ReservationsModel, String> conditionColumn;
     @FXML
     private TableColumn<ReservationsModel, LocalDate> deadlineColumn;
+    @FXML
+    private CheckBox strikeBox;
+    @FXML
+    private TextField strikeField;
 
     private CurrentReservationDAOImpl reservationDAO;
+    private PastReservationDAOImpl pastReservationDAO;
+    private ReaderDAOImpl readerDAO;
+    private BookDAOImpl bookDAO;
 
     ObservableList<ReservationsModel> reservationsModelObservableList = FXCollections.observableArrayList();
 
@@ -54,8 +69,39 @@ public class AdminReservationManageController extends Controller implements Init
             return;
         }
 
-        // TODO: finish!
+        int reservationId = reservationsModel.getId();
+        CurrentReservation reservation = reservationDAO.getCurrentReservationById(reservationId);
 
+        Book book = reservation.getBookReserved();
+        book.setReserved(false);
+        bookDAO.updateBook(book);
+
+        PastReservation pastReservation = new PastReservation();
+        pastReservation.setReader(reservation.getReader());
+        pastReservation.setNumOfDaysForReservation(reservation.getNumOfDaysForReservation());
+        pastReservation.setBookReserved(book);
+        pastReservation.setDateOfPicking(reservation.getDateOfPicking());
+        pastReservation.setDateOfReturn(LocalDate.now());
+        pastReservation.setBookConditionOnReturn(book.getCondition());
+
+        if (strikeBox.isSelected()) {
+            pastReservation.setStrikeIsIssued(true);
+            pastReservation.setStrikeDescription(strikeField.getText());
+            Reader reader = readerDAO.getReaderByLogin(reservationsModel.getUserLogin());
+            reader.setNumOfStrikes(Math.min(reader.getNumOfStrikes() + 1, 3));
+            readerDAO.updateReader(reader);
+        } else {
+            pastReservation.setStrikeIsIssued(false);
+            pastReservation.setStrikeDescription(null);
+        }
+
+        reservationDAO.deleteCurrentReservation(reservationId);
+        pastReservationDAO.addPastReservation(pastReservation);
+
+        strikeBox.setSelected(false);
+        strikeField.setText("");
+
+        refreshTable();
     }
 
     public void refreshTable() {
@@ -87,6 +133,9 @@ public class AdminReservationManageController extends Controller implements Init
             String databaseUrl = "jdbc:sqlite:src/main/resources/com/example/demo/library.db";
             Connection connection = DriverManager.getConnection(databaseUrl);
             reservationDAO = new CurrentReservationDAOImpl(connection);
+            pastReservationDAO = new PastReservationDAOImpl(connection);
+            bookDAO = new BookDAOImpl(connection);
+            readerDAO = new ReaderDAOImpl(connection);
         } catch (SQLException e) {
             e.printStackTrace();
         }
