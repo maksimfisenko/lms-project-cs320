@@ -71,7 +71,7 @@ public class AdminAddBookController extends Controller {
 
 
     public void back(ActionEvent e) throws IOException {
-        this.LoadScene("AdminBookManage.fxml", e);
+        this.LoadScene("AdminBookManage.fxml", e, this.getLoginInfo());
     }
 
     public void save(ActionEvent e) throws IOException {

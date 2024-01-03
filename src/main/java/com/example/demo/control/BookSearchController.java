@@ -52,7 +52,7 @@ public class BookSearchController extends Controller implements Initializable{
     ObservableList<BookSearchModel> bookSearchModelObservableList = FXCollections.observableArrayList();
 
     public void Back (ActionEvent e) throws IOException {
-        this.LoadScene("UserWelcome.fxml", e);
+        this.LoadScene("UserWelcome.fxml", e, this.getLoginInfo());
     }
 
     public void StartSearchBar(String search){
