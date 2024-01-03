@@ -33,5 +33,6 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
+      <Button layoutX="294.0" layoutY="441.0" mnemonicParsing="false" onAction="#unban" text="Unban" />
    </children>
 </AnchorPane>
