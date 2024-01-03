@@ -1,5 +1,6 @@
 package com.example.demo.control;
 
+import com.example.demo.model.NewReservationModel;
 import com.example.demo.model.ReservationsModel;
 import com.example.demo.model.daoimpl.CurrentReservationDAOImpl;
 import com.example.demo.model.entities.CurrentReservation;
@@ -42,8 +43,19 @@ public class AdminReservationManageController extends Controller implements Init
 
     ObservableList<ReservationsModel> reservationsModelObservableList = FXCollections.observableArrayList();
 
-    public void Back (ActionEvent e) throws IOException {
+    public void back(ActionEvent e) throws IOException {
         this.LoadScene("AdminWelcome.fxml", e, this.getLoginInfo());
+    }
+
+    public void endReservation() {
+
+        ReservationsModel reservationsModel = tableView.getSelectionModel().getSelectedItem();
+        if (reservationsModel == null) {
+            return;
+        }
+
+        // TODO: finish!
+
     }
 
     public void refreshTable() {
