@@ -1,6 +1,5 @@
 package com.example.demo.control;
 
-import com.example.demo.model.NewReservationModel;
 import com.example.demo.model.ReservationsModel;
 import com.example.demo.model.daoimpl.BookDAOImpl;
 import com.example.demo.model.daoimpl.CurrentReservationDAOImpl;

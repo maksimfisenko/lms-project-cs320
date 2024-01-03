@@ -101,8 +101,8 @@ public class BookDAOImpl implements BookDAO {
             preparedStatement.setString(7, book.getPublisher());
             preparedStatement.setString(8, book.getCondition());
             preparedStatement.setBoolean(9, book.isReserved());
-            preparedStatement.setInt(10, book.getId());
-            preparedStatement.setString(11, book.getAuthor());
+            preparedStatement.setString(10, book.getAuthor());
+            preparedStatement.setInt(11, book.getId());
 
             preparedStatement.executeUpdate();
 

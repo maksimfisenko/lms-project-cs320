@@ -44,6 +44,7 @@ public class BookDAOImplTest {
         book.setIsbn("1234");
         book.setTitle("Title");
         book.setCondition("New");
+        book.setAuthor("Author");
 
         bookDAO.addBook(book);
         Book retrievedBook = bookDAO.getBookById(book.getId());
@@ -61,11 +62,13 @@ public class BookDAOImplTest {
         book1.setIsbn("1234");
         book1.setTitle("Title1");
         book1.setCondition("New");
+        book1.setAuthor("Author1");
 
         Book book2 = new Book();
         book2.setIsbn("1235");
         book2.setTitle("Title2");
         book2.setCondition("New");
+        book2.setAuthor("Author2");
 
         bookDAO.addBook(book1);
         bookDAO.addBook(book2);
@@ -84,6 +87,7 @@ public class BookDAOImplTest {
         book.setIsbn("1234");
         book.setTitle("Title");
         book.setCondition("New");
+        book.setAuthor("Author");
 
         bookDAO.addBook(book);
 
@@ -103,6 +107,7 @@ public class BookDAOImplTest {
         book.setIsbn("1234");
         book.setTitle("Title");
         book.setCondition("New");
+        book.setAuthor("Author");
 
         bookDAO.addBook(book);
         bookDAO.deleteBook(book.getId());
@@ -119,11 +124,13 @@ public class BookDAOImplTest {
         book1.setIsbn("1234");
         book1.setTitle("Title1");
         book1.setCondition("New");
+        book1.setAuthor("Author1");
 
         Book book2 = new Book();
         book2.setIsbn("1235");
         book2.setTitle("Title2");
         book2.setCondition("New");
+        book2.setAuthor("Author 2");
 
         book2.setReserved(true);
 
@@ -143,11 +150,13 @@ public class BookDAOImplTest {
         book1.setIsbn("1234");
         book1.setTitle("Title1");
         book1.setCondition("New");
+        book1.setAuthor("Author1");
 
         Book book2 = new Book();
         book2.setIsbn("1235");
         book2.setTitle("Title2");
         book2.setCondition("New");
+        book2.setAuthor("Author 2");
 
         book2.setReserved(true);
 

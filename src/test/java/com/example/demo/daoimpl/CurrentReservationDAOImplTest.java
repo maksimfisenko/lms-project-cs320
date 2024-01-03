@@ -70,6 +70,7 @@ public class CurrentReservationDAOImplTest {
         book.setIsbn("1234");
         book.setTitle("Title");
         book.setCondition("New");
+        book.setAuthor("Author");
         bookDAO.addBook(book);
 
         CurrentReservation currentReservation = new CurrentReservation();
@@ -101,12 +102,14 @@ public class CurrentReservationDAOImplTest {
         book1.setIsbn("1234");
         book1.setTitle("Title1");
         book1.setCondition("New1");
+        book1.setAuthor("Author1");
         bookDAO.addBook(book1);
 
         Book book2 = new Book();
         book2.setIsbn("1235");
         book2.setTitle("Title2");
         book2.setCondition("New2");
+        book2.setAuthor("Author2");
         bookDAO.addBook(book2);
 
         CurrentReservation currentReservation1 = new CurrentReservation();
@@ -152,12 +155,14 @@ public class CurrentReservationDAOImplTest {
         book1.setIsbn("1234");
         book1.setTitle("Title1");
         book1.setCondition("New1");
+        book1.setAuthor("Author");
         bookDAO.addBook(book1);
 
         Book book2 = new Book();
         book2.setIsbn("1235");
         book2.setTitle("Title2");
         book2.setCondition("New2");
+        book2.setAuthor("Author");
         bookDAO.addBook(book2);
 
         CurrentReservation currentReservation1 = new CurrentReservation();
@@ -195,6 +200,7 @@ public class CurrentReservationDAOImplTest {
         book.setIsbn("1234");
         book.setTitle("Title");
         book.setCondition("New");
+        book.setAuthor("Author");
         bookDAO.addBook(book);
 
         CurrentReservation currentReservation = new CurrentReservation();
@@ -229,6 +235,7 @@ public class CurrentReservationDAOImplTest {
         book.setIsbn("1234");
         book.setTitle("Title");
         book.setCondition("New");
+        book.setAuthor("Author");
         bookDAO.addBook(book);
 
         CurrentReservation currentReservation = new CurrentReservation();
