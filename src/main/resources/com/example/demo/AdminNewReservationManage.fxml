@@ -18,16 +18,16 @@
         <columns>
           <TableColumn prefWidth="106.4000244140625" text="Date of request" />
           <TableColumn prefWidth="76.0" text="User" />
-            <TableColumn prefWidth="56.800048828125" text="Strkikes" />
+            <TableColumn prefWidth="56.800048828125" text="Strikes" />
             <TableColumn prefWidth="76.800048828125" text="Book" />
             <TableColumn prefWidth="96.0" text="Book Condition" />
-            <TableColumn prefWidth="97.60003662109375" text="Date of Reques" />
+            <TableColumn prefWidth="97.60003662109375" text="Date of Requests" />
             <TableColumn prefWidth="126.4000244140625" text="Status" />
         </columns>
       </TableView>
       <Button fx:id="approveButton" layoutX="14.0" layoutY="440.0" mnemonicParsing="false" text="Approve" />
       <Button fx:id="cancelButton" layoutX="574.0" layoutY="440.0" mnemonicParsing="false" text="Cancel" />
-      <Button fx:id="backButton" layoutY="7.0" mnemonicParsing="false" onAction="#Back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
+      <Button fx:id="backButton" layoutY="7.0" mnemonicParsing="false" onAction="#back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

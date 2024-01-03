@@ -2,14 +2,16 @@ package com.example.demo.control;
 
 import com.example.demo.model.BookSearchModel;
 import com.example.demo.model.daoimpl.BookDAOImpl;
-import com.example.demo.model.entities.Author;
-import com.example.demo.model.entities.Book;
+import com.example.demo.model.daoimpl.CurrentReservationDAOImpl;
+import com.example.demo.model.daoimpl.ReaderDAOImpl;
+import com.example.demo.model.entities.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -48,6 +50,8 @@ public class BookSearchController extends Controller implements Initializable{
     private TextField searchField;
 
     private BookDAOImpl bookDAO;
+    private ReaderDAOImpl readerDAO;
+    private CurrentReservationDAOImpl reservationDAO;
 
     ObservableList<BookSearchModel> bookSearchModelObservableList = FXCollections.observableArrayList();
 
@@ -59,6 +63,53 @@ public class BookSearchController extends Controller implements Initializable{
         searchField.setText(search);
     }
 
+    private void throwError(String text) {
+        Alert error = new Alert(Alert.AlertType.ERROR);
+        error.setHeaderText("Book Reserving Error");
+        error.setContentText(text);
+        error.showAndWait();
+    }
+
+    private void throwNotification() {
+        Alert error = new Alert(Alert.AlertType.INFORMATION);
+        error.setHeaderText("Book Reserving");
+        error.setContentText("The request has been sent to admin.");
+        error.showAndWait();
+    }
+
+    public void reserveBook(ActionEvent e) {
+
+        BookSearchModel bookSearchModel = bookTableView.getSelectionModel().getSelectedItem();
+        if (bookSearchModel == null) {
+            return;
+        }
+
+        int bookId = bookSearchModel.getId();
+        String readerLogin = this.getLoginInfo();
+
+        Book book = bookDAO.getBookById(bookId);
+        Reader reader = readerDAO.getReaderByLogin(readerLogin);
+
+        if (reader.getNumOfStrikes() > 2) {
+            this.throwError("You are banned as you have more than 2 strikes.");
+            return;
+        }
+
+        CurrentReservation reservation = new CurrentReservation();
+        reservation.setReader(reader);
+        reservation.setBookReserved(book);
+        reservation.setNumOfDaysForReservation(14);
+
+        reservationDAO.addCurrentReservation(reservation);
+
+        book.setReserved(true);
+        bookDAO.updateBook(book);
+
+        this.throwNotification();
+
+        refreshTable();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resource){
 
@@ -66,12 +117,19 @@ public class BookSearchController extends Controller implements Initializable{
             String databaseUrl = "jdbc:sqlite:src/main/resources/com/example/demo/library.db";
             Connection connection = DriverManager.getConnection(databaseUrl);
             bookDAO = new BookDAOImpl(connection);
+            reservationDAO = new CurrentReservationDAOImpl(connection);
+            readerDAO = new ReaderDAOImpl(connection);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        List<Book> notReservedBooks = bookDAO.getNotReservedBooks();
+        refreshTable();
+    }
 
+    public void refreshTable() {
+
+        List<Book> notReservedBooks = bookDAO.getNotReservedBooks();
+        bookSearchModelObservableList.clear();
         for (Book book : notReservedBooks) {
 
             bookSearchModelObservableList.add(new BookSearchModel(
@@ -115,6 +173,5 @@ public class BookSearchController extends Controller implements Initializable{
         sortedData.comparatorProperty().bind(bookTableView.comparatorProperty());
 
         bookTableView.setItems(sortedData);
-
     }
 }

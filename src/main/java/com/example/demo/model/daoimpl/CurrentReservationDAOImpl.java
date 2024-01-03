@@ -30,7 +30,11 @@ public class CurrentReservationDAOImpl implements CurrentReservationDAO {
 
             preparedStatement.setInt(1, currentReservation.getBookReserved().getId());
             preparedStatement.setInt(2, currentReservation.getReader().getId());
-            preparedStatement.setDate(3,java.sql.Date.valueOf(currentReservation.getDateOfPicking()));
+            if (currentReservation.getDateOfPicking() == null) {
+                preparedStatement.setDate(3,null);
+            } else {
+                preparedStatement.setDate(3,java.sql.Date.valueOf(currentReservation.getDateOfPicking()));
+            }
             preparedStatement.setInt(4, currentReservation.getNumOfDaysForReservation());
 
             preparedStatement.executeUpdate();
@@ -118,7 +122,11 @@ public class CurrentReservationDAOImpl implements CurrentReservationDAO {
 
             preparedStatement.setInt(1, currentReservation.getBookReserved().getId());
             preparedStatement.setInt(2, currentReservation.getReader().getId());
-            preparedStatement.setDate(3, java.sql.Date.valueOf( currentReservation.getDateOfPicking()));
+            if (currentReservation.getDateOfPicking() == null) {
+                preparedStatement.setDate(3,null);
+            } else {
+                preparedStatement.setDate(3,java.sql.Date.valueOf(currentReservation.getDateOfPicking()));
+            }
             preparedStatement.setInt(4, currentReservation.getNumOfDaysForReservation());
             preparedStatement.setInt(5, currentReservation.getId());
 
@@ -150,6 +158,25 @@ public class CurrentReservationDAOImpl implements CurrentReservationDAO {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public List<CurrentReservation> getReservationsWithNullDate() {
+
+        List<CurrentReservation> currentReservations = new ArrayList<>();
+
+        String query = "SELECT * FROM current_reservations WHERE date_of_picking IS NULL";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    currentReservations.add(mapResultSetToCurrentReservation(resultSet));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return currentReservations;
     }
 
     private CurrentReservation mapResultSetToCurrentReservation(ResultSet resultSet) throws SQLException {
