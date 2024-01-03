@@ -14,12 +14,12 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="reservationsTable" layoutY="87.0" prefHeight="342.0" prefWidth="640.0">
+      <TableView fx:id="tableView" layoutY="87.0" prefHeight="342.0" prefWidth="640.0">
         <columns>
             <TableColumn fx:id="idColumn" prefWidth="75.0" text="Id" />
-          <TableColumn fx:id="userColumn" prefWidth="96.79998779296875" text="User Login" />
+            <TableColumn fx:id="userLoginColumn" prefWidth="96.79998779296875" text="User Login" />
             <TableColumn fx:id="dateColumn" prefWidth="86.4000244140625" text="Date Picked" />
-            <TableColumn fx:id="bookColumn" editable="false" prefWidth="78.4000244140625" text="Book Title" />
+            <TableColumn fx:id="bookTitleColumn" editable="false" prefWidth="78.4000244140625" text="Book Title" />
             <TableColumn fx:id="conditionColumn" editable="false" prefWidth="123.20001220703125" text="Condition" />
             <TableColumn fx:id="deadlineColumn" editable="false" prefWidth="181.5999755859375" text="Deadline to return" />
         </columns>

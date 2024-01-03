@@ -11,4 +11,5 @@ public interface CurrentReservationDAO {
     void updateCurrentReservation(CurrentReservation currentReservation);
     void deleteCurrentReservation(int id);
     List<CurrentReservation> getReservationsWithNullDate();
+    List<CurrentReservation> getReservationsWithDate();
 }
