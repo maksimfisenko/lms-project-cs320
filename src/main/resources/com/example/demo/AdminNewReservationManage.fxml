@@ -14,17 +14,17 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="newReservationsTable" layoutY="80.0" prefHeight="330.0" prefWidth="640.0">
+      <TableView fx:id="tableView" layoutY="80.0" prefHeight="330.0" prefWidth="640.0">
         <columns>
             <TableColumn fx:id="idColumn" prefWidth="91.20001220703125" text="Reservation ID" />
           <TableColumn fx:id="userLoginColumn" prefWidth="132.79998779296875" text="User Login" />
-            <TableColumn fx:id="strikesColumn" prefWidth="127.20001220703125" text="Strkikes" />
+            <TableColumn fx:id="strikesColumn" prefWidth="127.20001220703125" text="Strikes" />
             <TableColumn fx:id="bookTitleColumn" prefWidth="133.5999755859375" text="Book Title " />
             <TableColumn fx:id="conditionColumn" prefWidth="152.79998779296875" text="Book Condition" />
         </columns>
       </TableView>
-      <Button fx:id="approveButton" layoutX="14.0" layoutY="440.0" mnemonicParsing="false" text="Approve" />
-      <Button fx:id="cancelButton" layoutX="574.0" layoutY="440.0" mnemonicParsing="false" text="Cancel" />
+      <Button fx:id="approveButton" layoutX="14.0" layoutY="440.0" mnemonicParsing="false" onAction="#approve" text="Approve" />
+      <Button fx:id="cancelButton" layoutX="574.0" layoutY="440.0" mnemonicParsing="false" onAction="#deny" text="Cancel" />
       <Button fx:id="backButton" layoutY="7.0" mnemonicParsing="false" onAction="#back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
          <font>
             <Font name="System Bold" size="20.0" />

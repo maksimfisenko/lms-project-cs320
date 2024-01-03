@@ -182,15 +182,18 @@ public class CurrentReservationDAOImpl implements CurrentReservationDAO {
     private CurrentReservation mapResultSetToCurrentReservation(ResultSet resultSet) throws SQLException {
 
         BookDAOImpl book = new BookDAOImpl(connection);
-        ReaderDAOImpl reader= new ReaderDAOImpl(connection);
+        ReaderDAOImpl reader = new ReaderDAOImpl(connection);
 
-        return new CurrentReservation(
-                resultSet.getInt("id"),
-                book.getBookById(resultSet.getInt("book_id")),
-                reader.getReaderById(resultSet.getInt("reader_id")),
-                resultSet.getDate("date_of_picking").toLocalDate(),
-                resultSet.getInt("num_of_days_reserved")
-        );
+        CurrentReservation reservation = new CurrentReservation();
+        reservation.setId(resultSet.getInt("id"));
+        reservation.setBookReserved(book.getBookById(resultSet.getInt("book_id")));
+        reservation.setReader(reader.getReaderById(resultSet.getInt("reader_id")));
+        reservation.setNumOfDaysForReservation(resultSet.getInt("num_of_days_reserved"));
+
+        if (resultSet.getDate("date_of_picking") != null) {
+            reservation.setDateOfPicking(resultSet.getDate("date_of_picking").toLocalDate());
+        }
+
+        return reservation;
     }
-
 }
