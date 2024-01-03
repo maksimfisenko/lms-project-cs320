@@ -90,9 +90,13 @@ public class AdminAddBookController extends Controller {
             throwError("Number of pages must be a positive integer");
             return;
         }
-        // TODO: deal with authors! add authors when saving books!
+        if (authorsField.getText().isEmpty() || authorsField.getText().isBlank()) {
+            throwError("Author field of the book cannot be empty.");
+            return;
+        }
 
         Book book = new Book();
+        book.setAuthor(authorsField.getText());
         book.setTitle(titleField.getText());
         book.setIsbn(isbnField.getText());
         book.setNumOfPages(Integer.parseInt(numberField.getText()));
@@ -101,9 +105,6 @@ public class AdminAddBookController extends Controller {
         book.setCoverType(coverBox.getValue());
         book.setPublisher(publisherField.getText());
         book.setCondition(conditionBox.getValue());
-
-        List<String> authors = new ArrayList<String>();
-
 
         try {
             String databaseUrl = "jdbc:sqlite:src/main/resources/com/example/demo/library.db";
@@ -116,6 +117,7 @@ public class AdminAddBookController extends Controller {
         bookDAO.addBook(book);
 
         titleField.setText("");
+        authorsField.setText("");
         isbnField.setText("");
         numberField.setText("");
         publisherField.setText("");
