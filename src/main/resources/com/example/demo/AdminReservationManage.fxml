@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -15,8 +14,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="searchField" layoutX="30.0" layoutY="62.0" prefHeight="26.0" prefWidth="580.0" promptText="Search" />
-      <TableView fx:id="tableView" layoutY="121.0" prefHeight="308.0" prefWidth="640.0">
+      <TableView fx:id="tableView" layoutY="87.0" prefHeight="342.0" prefWidth="640.0">
         <columns>
             <TableColumn fx:id="idColumn" prefWidth="75.0" text="Id" />
             <TableColumn fx:id="userLoginColumn" prefWidth="96.79998779296875" text="User Login" />
@@ -26,8 +24,7 @@
             <TableColumn fx:id="deadlineColumn" editable="false" prefWidth="181.5999755859375" text="Deadline to return" />
         </columns>
       </TableView>
-      <Button fx:id="saveButton" layoutX="14.0" layoutY="441.0" mnemonicParsing="false" text="Save Changes" />
-      <Button layoutX="526.0" layoutY="441.0" mnemonicParsing="false" text="Cancel Changes" />
+      <Button fx:id="endButton" layoutX="275.0" layoutY="440.0" mnemonicParsing="false" text="End Reservation" />
       <Button fx:id="backButton" layoutY="10.0" mnemonicParsing="false" onAction="#Back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
          <font>
             <Font name="System Bold" size="20.0" />
