@@ -137,6 +137,22 @@ public class AdminDAOImpl implements AdminDAO {
         }
     }
 
+    @Override
+    public boolean loginCheck(String login){
+        String query = "SELECT * FROM admins WHERE login = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, login);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                return resultSet.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     private Admin mapResultSetToAdmin(ResultSet resultSet) throws SQLException {
 
         return new Admin(

@@ -2,6 +2,7 @@ package com.example.demo.control;
 
 import com.example.demo.model.daoimpl.AdminDAOImpl;
 import com.example.demo.model.daoimpl.BookDAOImpl;
+import com.example.demo.model.daoimpl.ReaderDAOImpl;
 import com.example.demo.model.entities.Admin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,6 +29,7 @@ public class AdminSignUpController extends Controller {
     private PasswordField passwordCheckField;
 
     private AdminDAOImpl adminDAO;
+    private ReaderDAOImpl readerDAO;
 
     private void throwError(String text) {
         Alert error = new Alert(Alert.AlertType.ERROR);
@@ -54,7 +56,8 @@ public class AdminSignUpController extends Controller {
             throwError("Login cannot be empty.");
             return;
         }
-        // TODO: check if there are readers and admins with this login already
+
+
         // TODO: maybe add that login should be at least 8 symbols, for example
         if (!passwordField.getText().equals(passwordCheckField.getText())) {
             throwError("Passwords are not the same.");
@@ -75,11 +78,22 @@ public class AdminSignUpController extends Controller {
             String databaseUrl = "jdbc:sqlite:src/main/resources/com/example/demo/library.db";
             Connection connection = DriverManager.getConnection(databaseUrl);
             adminDAO = new AdminDAOImpl(connection);
+            readerDAO = new ReaderDAOImpl(connection);
         } catch (SQLException err) {
             err.printStackTrace();
         }
 
+        if (adminDAO.loginCheck(loginField.getText()) || readerDAO.loginCheck(loginField.getText())){
+            throwError("Login already exists, try another one.");
+            return;
+        }
+
         adminDAO.addAdmin(admin);
+
+        Alert ok = new Alert(Alert.AlertType.INFORMATION);
+        ok.setHeaderText("OK");
+        ok.setContentText("Admin Created!");
+        ok.showAndWait();
 
         firstNameField.setText("");
         lastNameField.setText("");

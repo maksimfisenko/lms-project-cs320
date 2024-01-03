@@ -33,6 +33,7 @@ public class SignUpController extends Controller {
     @FXML
     PasswordField passwordCheckField;
     private ReaderDAOImpl readerDAO;
+    private  AdminDAOImpl adminDAO;
 
     public void Back(ActionEvent e) throws IOException{
         this.LoadScene("Login.fxml", e);
@@ -59,7 +60,9 @@ public class SignUpController extends Controller {
             throwError("Login cannot be empty.");
             return;
         }
-        // TODO: check if there are readers or admins with this login already
+
+
+
         // TODO: maybe add that login should be at least 8 symbols, for example
         if (!passwordField.getText().equals(passwordCheckField.getText())) {
             throwError("Passwords are not the same.");
@@ -80,8 +83,14 @@ public class SignUpController extends Controller {
             String databaseUrl = "jdbc:sqlite:src/main/resources/com/example/demo/library.db";
             Connection connection = DriverManager.getConnection(databaseUrl);
             readerDAO = new ReaderDAOImpl(connection);
+            adminDAO = new AdminDAOImpl(connection);
         } catch (SQLException err) {
             err.printStackTrace();
+        }
+
+        if (adminDAO.loginCheck(loginField.getText()) || readerDAO.loginCheck(loginField.getText())){
+            throwError("Login already exists, try another one.");
+            return;
         }
 
         readerDAO.addReader(reader);
