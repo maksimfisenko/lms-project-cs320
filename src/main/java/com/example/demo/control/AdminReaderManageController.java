@@ -59,6 +59,16 @@ public class AdminReaderManageController  extends Controller implements Initiali
         }
     }
 
+    public void unban(ActionEvent e) {
+        UserSearchModel userSearchModel = userSearchTable.getSelectionModel().getSelectedItem();
+        if (userSearchModel != null) {
+            String login = userSearchModel.getLogin();
+            Reader reader = readerDAO.getReaderByLogin(login);
+            reader.setNumOfStrikes(0);
+            readerDAO.updateReader(reader);
+            refreshTable();
+        }
+    }
     public void giveStrike(ActionEvent e) {
         UserSearchModel userSearchModel = userSearchTable.getSelectionModel().getSelectedItem();
         if (userSearchModel != null) {
