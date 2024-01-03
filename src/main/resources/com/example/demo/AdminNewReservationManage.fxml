@@ -25,7 +25,7 @@
       </TableView>
       <Button fx:id="approveButton" layoutX="14.0" layoutY="440.0" mnemonicParsing="false" text="Approve" />
       <Button fx:id="cancelButton" layoutX="574.0" layoutY="440.0" mnemonicParsing="false" text="Cancel" />
-      <Button fx:id="backButton" layoutY="7.0" mnemonicParsing="false" onAction="#Back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
+      <Button fx:id="backButton" layoutY="7.0" mnemonicParsing="false" onAction="#back" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="←">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
