@@ -7,18 +7,18 @@ import java.util.List;
 public class BookSearchModel {
     private int id;
     private String title;
-    private List<Author> authors;
+    private String author;
     private String genre;
     private String isbn;
     private String publisher;
     private String condition;
     private String description;
 
-    public BookSearchModel(int id, String title, List<Author> authors, String genre,
+    public BookSearchModel(int id, String title, String author, String genre,
                            String isbn, String publisher, String condition, String description) {
         this.id = id;
         this.title = title;
-        this.authors = authors;
+        this.author = author;
         this.genre = genre;
         this.isbn = isbn;
         this.publisher = publisher;
@@ -42,12 +42,12 @@ public class BookSearchModel {
         this.title = title;
     }
 
-    public List<Author> getAuthors() {
-        return authors;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
+    public void setAuthors(String author) {
+        this.author = author;
     }
 
     public String getGenre() {

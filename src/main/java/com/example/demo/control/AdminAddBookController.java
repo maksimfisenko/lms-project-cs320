@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminAddBookController extends Controller {
 
@@ -99,6 +101,9 @@ public class AdminAddBookController extends Controller {
         book.setCoverType(coverBox.getValue());
         book.setPublisher(publisherField.getText());
         book.setCondition(conditionBox.getValue());
+
+        List<String> authors = new ArrayList<String>();
+
 
         try {
             String databaseUrl = "jdbc:sqlite:src/main/resources/com/example/demo/library.db";

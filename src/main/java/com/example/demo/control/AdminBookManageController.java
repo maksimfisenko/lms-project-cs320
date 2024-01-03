@@ -125,7 +125,7 @@ public class AdminBookManageController extends Controller implements Initializab
             bookSearchModelObservableList.add(new BookSearchModel(
                     book.getId(),
                     book.getTitle(),
-                    book.getAuthors(),
+                    book.getAuthor(),
                     book.getGenre(),
                     book.getIsbn(),
                     book.getPublisher(),

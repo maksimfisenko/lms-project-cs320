@@ -17,7 +17,7 @@ public class BookDAOImpl implements BookDAO {
     @Override
     public void addBook(Book book) {
 
-        String query = "INSERT INTO books (isbn, title, genre, num_of_pages, description, cover_type, publisher, condition, is_reserved) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO books (isbn, title, genre, num_of_pages, description, cover_type, publisher, condition, is_reserved, author) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
@@ -30,6 +30,7 @@ public class BookDAOImpl implements BookDAO {
             preparedStatement.setString(7, book.getPublisher());
             preparedStatement.setString(8, book.getCondition());
             preparedStatement.setBoolean(9, book.isReserved());
+            preparedStatement.setString(10, book.getAuthor());
 
             preparedStatement.executeUpdate();
 
@@ -87,7 +88,7 @@ public class BookDAOImpl implements BookDAO {
     @Override
     public void updateBook(Book book) {
 
-        String query = "UPDATE books SET isbn = ?, title = ?, genre = ?, num_of_pages = ?, description = ?, cover_type = ?, publisher = ?, condition = ?, is_reserved = ? WHERE id = ?";
+        String query = "UPDATE books SET isbn = ?, title = ?, genre = ?, num_of_pages = ?, description = ?, cover_type = ?, publisher = ?, condition = ?, is_reserved = ?, author = ? WHERE id = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
@@ -101,6 +102,7 @@ public class BookDAOImpl implements BookDAO {
             preparedStatement.setString(8, book.getCondition());
             preparedStatement.setBoolean(9, book.isReserved());
             preparedStatement.setInt(10, book.getId());
+            preparedStatement.setString(11, book.getAuthor());
 
             preparedStatement.executeUpdate();
 
@@ -178,6 +180,7 @@ public class BookDAOImpl implements BookDAO {
         book.setPublisher(resultSet.getString("publisher"));
         book.setCondition(resultSet.getString("condition"));
         book.setReserved(resultSet.getBoolean("is_reserved"));
+        book.setAuthor(resultSet.getString("author"));
 
         return book;
     }
